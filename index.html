@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1015" />
+  <title>PART HUNT GH — Find the right part</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" data-page="home" aria-label="Part Hunt GH home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M5 19.5 8.2 12a3 3 0 0 1 2.8-1.9h10a3 3 0 0 1 2.8 1.9l3.2 7.5v5H23v-2H9v2H5z"/>
+          <path d="M9 18h14M11 13h10M10 21h2m8 0h2"/>
+        </svg>
+      </span>
+      <span class="brand-name">PART HUNT <b>GH</b><small>THE PARTS FINDER</small></span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#" data-page="home" class="nav-link active">Discover</a>
+      <a href="#" data-page="browse" class="nav-link">Browse parts</a>
+      <a href="#" data-page="hunt" class="nav-link">Part Hunt <span class="nav-new">NEW</span></a>
+      <a href="#" data-page="vendors" class="nav-link">For vendors</a>
+    </nav>
+
+    <div class="top-actions">
+      <!-- DARK / LIGHT MODE BUTTON -->
+      <button
+        class="icon-btn theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch to light mode"
+        title="Switch to light mode"
+      >☀</button>
+
+      <button class="icon-btn" id="cartOpen" aria-label="Open cart">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 2-1.6L21 8H6"/>
+          <circle cx="10" cy="20" r="1"/>
+          <circle cx="18" cy="20" r="1"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+      <button class="btn btn-light btn-small" data-page="vendors">Join as vendor <span>↗</span></button>
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> GHANA'S SMARTER PARTS MARKETPLACE</div>
+          <h1>The right part.<br><span class="gradient-text">No market marathon.</span></h1>
+          <p class="hero-sub">Find replacement parts from trusted sellers across Ghana. Know the part? Search it. Not sure? Show us what you need.</p>
+
+          <div class="hero-search">
+            <span class="search-icon">⌕</span>
+            <input id="heroSearch" type="search" placeholder="Search a part, vehicle or part number..." />
+            <button class="btn btn-accent" id="heroSearchBtn">Search parts <span>↗</span></button>
+          </div>
+
+          <div class="hero-quick">
+            <span>Popular:</span>
+            <button data-search="Headlight">Headlights</button>
+            <button data-search="Brake pads">Brake pads</button>
+            <button data-search="Toyota Corolla">Toyota Corolla</button>
+          </div>
+
+          <div class="hero-proof">
+            <div class="avatar-stack"><span>AK</span><span>JM</span><span>EO</span><span>+</span></div>
+            <div><b>Made for drivers & mechanics</b><small>One request. Multiple supplier options.</small></div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-orbit orbit-a"></div>
+          <div class="hero-orbit orbit-b"></div>
+          <div class="hero-image"></div>
+
+          <div class="floating-tag tag-top">
+            <span class="tag-icon">⌕</span>
+            <div><b>Part identified</b><small>Visual match found</small></div>
+            <span class="tag-check">✓</span>
+          </div>
+
+          <div class="floating-tag tag-bottom">
+            <div class="mini-bars"><i></i><i></i><i></i></div>
+            <div><b>3 vendor offers</b><small>Compare price & condition</small></div>
+            <span class="tag-arrow">↗</span>
+          </div>
+
+          <div class="visual-caption">PARTS. PEOPLE. POSSIBILITIES.<span>01 / DISCOVER</span></div>
+        </div>
+      </section>
+
+      <section class="vehicle-strip wrap">
+        <div class="vehicle-title">
+          <span class="tiny-label">START WITH YOUR VEHICLE</span>
+          <h2>Find parts that <em>fit.</em></h2>
+        </div>
+
+        <div class="vehicle-fields">
+          <label>
+            <span>Make</span>
+            <select id="makeSelect">
+              <option value="">Choose make</option>
+              <option>Toyota</option>
+              <option>Hyundai</option>
+              <option>Honda</option>
+              <option>Nissan</option>
+              <option>Kia</option>
+              <option>Mercedes-Benz</option>
+              <option>Volkswagen</option>
+            </select>
+          </label>
+
+          <label><span>Model</span><input id="modelInput" placeholder="e.g. Corolla" /></label>
+
+          <label>
+            <span>Year</span>
+            <select id="yearSelect">
+              <option value="">Year</option>
+              <option>2024</option>
+              <option>2023</option>
+              <option>2022</option>
+              <option>2020</option>
+              <option>2018</option>
+              <option>2015</option>
+              <option>2012</option>
+              <option>2010</option>
+            </select>
+          </label>
+
+          <button class="btn btn-dark" id="vehicleSearch">Find compatible parts <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <div><span class="tiny-label">THE FAST LANE</span><h2>How do you want to <em>hunt?</em></h2></div>
+          <span class="section-note">A better way to source parts.</span>
+        </div>
+
+        <div class="hunt-modes">
+          <button class="mode-card mode-primary" data-page="hunt">
+            <div class="mode-top"><span class="mode-number">01 / VISUAL SEARCH</span><span class="round-arrow">↗</span></div>
+            <div class="mode-art upload-art">
+              <div class="scan-frame">
+                <span></span><span></span><span></span><span></span>
+                <div class="scan-symbol">⌕</div>
+              </div>
+              <div class="art-chip">PHOTO + VIDEO</div>
+            </div>
+            <div class="mode-bottom">
+              <div><h3>Hunt by showing</h3><p>Upload photos, videos and details. Let vendors find the right replacement.</p></div>
+              <span class="mode-arrow">↗</span>
+            </div>
+          </button>
+
+          <button class="mode-card" data-page="browse">
+            <div class="mode-top"><span class="mode-number">02 / PART CATALOG</span><span class="round-arrow">↗</span></div>
+            <div class="mode-art catalog-art">
+              <div class="catalog-tile"><span>⚙</span><b>ENGINE</b></div>
+              <div class="catalog-tile"><span>◉</span><b>LIGHTING</b></div>
+              <div class="catalog-tile"><span>▰</span><b>BRAKES</b></div>
+              <div class="catalog-tile"><span>⌁</span><b>BODY</b></div>
+            </div>
+            <div class="mode-bottom">
+              <div><h3>Browse the catalog</h3><p>Search popular components and explore listings from local suppliers.</p></div>
+              <span class="mode-arrow">↗</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <div><span class="tiny-label">IN DEMAND</span><h2>Parts people are <em>hunting.</em></h2></div>
+          <button class="text-link" data-page="browse">Explore all parts ↗</button>
+        </div>
+        <div class="product-grid" id="featuredProducts"></div>
+      </section>
+
+      <section class="partner-band wrap">
+        <div class="partner-copy">
+          <span class="tiny-label">FOR THE PEOPLE WHO KNOW PARTS</span>
+          <h2>Your shop. More reach.<br><em>More customers.</em></h2>
+          <p>Connect your inventory with drivers, mechanics and workshops looking for the parts you stock.</p>
+          <button class="btn btn-accent" data-page="vendors">Become a vendor <span>↗</span></button>
+        </div>
+
+        <div class="partner-visual">
+          <div class="partner-ring"></div>
+          <div class="partner-stat"><span>SELLER NETWORK</span><b>Built to grow</b><small>Across Ghana, one part at a time.</small></div>
+          <div class="partner-sticker">YOUR<br>SHOP<br><b>ONLINE</b></div>
+        </div>
+      </section>
+
+      <footer class="footer wrap">
+        <a class="brand" href="#" data-page="home">
+          <span class="brand-mark">
+            <svg viewBox="0 0 32 32">
+              <path d="M5 19.5 8.2 12a3 3 0 0 1 2.8-1.9h10a3 3 0 0 1 2.8 1.9l3.2 7.5v5H23v-2H9v2H5z"/>
+            </svg>
+          </span>
+          <span class="brand-name">PART HUNT <b>GH</b><small>THE PARTS FINDER</small></span>
+        </a>
+
+        <span>© 2026 PART HUNT GH · Demo concept</span>
+        <div><a href="#" data-page="hunt">Start a Part Hunt</a><a href="#" data-page="vendors">Vendor network</a></div>
+      </footer>
+    </section>
+
+    <!-- HUNT FORM -->
+    <section class="page" id="page-hunt">
+      <div class="subpage-wrap">
+        <button class="back-link" data-page="home">← Back to discover</button>
+
+        <div class="form-heading">
+          <span class="eyebrow"><span class="live-dot"></span> VISUAL PART HUNT</span>
+          <h1>Show us what<br><span class="gradient-text">you're hunting.</span></h1>
+          <p>Give vendors the details they need to find the right replacement. The more you share, the better the match.</p>
+        </div>
+
+        <div class="stepper">
+          <div class="step active"><span>01</span><b>Vehicle</b></div><i></i>
+          <div class="step active"><span>02</span><b>Part details</b></div><i></i>
+          <div class="step"><span>03</span><b>Send request</b></div>
+        </div>
+
+        <form id="huntForm" class="hunt-form">
+          <div class="form-panel">
+            <div class="panel-heading">
+              <div><span class="tiny-label">01 — VEHICLE DETAILS</span><h2>What are you driving?</h2></div>
+              <span class="panel-icon">⌁</span>
+            </div>
+
+            <div class="field-grid">
+              <label>Make
+                <select required id="huntMake">
+                  <option value="">Select make</option>
+                  <option>Toyota</option><option>Hyundai</option><option>Honda</option><option>Nissan</option><option>Kia</option><option>Mercedes-Benz</option><option>Volkswagen</option><option>Mitsubishi</option><option>Other</option>
+                </select>
+              </label>
+              <label>Model <input required placeholder="e.g. Corolla" id="huntModel"></label>
+              <label>Year <input required type="number" min="1980" max="2026" placeholder="e.g. 2015" id="huntYear"></label>
+              <label>Engine / trim <input placeholder="e.g. 1.8L, GL" id="huntTrim"></label>
+              <label class="field-full">Chassis or VIN number <input placeholder="Optional — helps confirm compatibility" id="huntVin"></label>
+            </div>
+          </div>
+
+          <div class="form-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="tiny-label">02 — SHOW THE PART</span>
+                <h2>Give us the full picture.</h2>
+                <p>Upload close-ups, labels, damage, or a video showing how it works.</p>
+              </div>
+              <span class="panel-icon">◉</span>
+            </div>
+
+            <div class="upload-grid">
+              <label class="upload-box" for="photoUpload">
+                <input type="file" id="photoUpload" accept="image/*" multiple>
+                <span class="upload-symbol">＋</span><b>Add part photos</b>
+                <small>JPG, PNG, WEBP · Multiple images</small>
+                <span class="upload-cta">Browse photos</span>
+              </label>
+
+              <label class="upload-box upload-video" for="videoUpload">
+                <input type="file" id="videoUpload" accept="video/*" multiple>
+                <span class="upload-symbol">▶</span><b>Add a detailed video</b>
+                <small>MP4, MOV · Show angles or movement</small>
+                <span class="upload-cta">Browse videos</span>
+              </label>
+            </div>
+
+            <div class="media-preview" id="mediaPreview"></div>
+
+            <div class="field-grid details-grid">
+              <label>Part name (if known) <input id="partName" placeholder="e.g. Front left side mirror"></label>
+
+              <label>Part category
+                <select id="partCategory">
+                  <option value="">Choose category</option>
+                  <option>Engine & transmission</option><option>Body & exterior</option><option>Electrical & lighting</option><option>Brakes & suspension</option><option>Interior</option><option>Cooling & AC</option><option>Other / not sure</option>
+                </select>
+              </label>
+
+              <label>Which side?
+                <select id="partSide">
+                  <option>Not applicable / unsure</option><option>Front left</option><option>Front right</option><option>Rear left</option><option>Rear right</option><option>Driver side</option><option>Passenger side</option>
+                </select>
+              </label>
+
+              <label>Condition preference
+                <select id="condition">
+                  <option>Any condition</option><option>Brand new</option><option>Used / fairly used</option><option>Genuine / OEM only</option><option>Aftermarket is okay</option>
+                </select>
+              </label>
+
+              <label class="field-full">Describe what you need
+                <textarea id="partDescription" required rows="4" placeholder="What happened to the part? What should the replacement include? Add any details your mechanic mentioned…"></textarea>
+                <small class="field-hint">Tip: Mention part numbers, connectors, color, damage, or anything that may help identify the exact fit.</small>
+              </label>
+
+              <label>Budget (GH₵) <input id="budget" type="number" min="0" placeholder="Optional"></label>
+              <label>Delivery / pickup location <input required id="location" placeholder="e.g. Adum, Kumasi"></label>
+            </div>
+          </div>
+
+          <div class="form-panel">
+            <div class="panel-heading">
+              <div><span class="tiny-label">03 — WHERE TO REACH YOU</span><h2>Almost there.</h2></div>
+              <span class="panel-icon">↗</span>
+            </div>
+
+            <div class="field-grid">
+              <label>Your name <input required id="customerName" placeholder="Name"></label>
+              <label>Phone / WhatsApp <input required id="customerPhone" type="tel" placeholder="e.g. 024 000 0000"></label>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <div><b>Ready to start your hunt?</b><small>Your request will be shared with relevant demo vendors.</small></div>
+            <button class="btn btn-accent btn-large" type="submit">Send Part Hunt <span>↗</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- BROWSE -->
+    <section class="page" id="page-browse">
+      <div class="subpage-wrap browse-wrap">
+        <div class="browse-heading">
+          <div><span class="eyebrow"><span class="live-dot"></span> PARTS CATALOG</span><h1>Find your <span class="gradient-text">component.</span></h1><p>Browse sample listings from our vendor network.</p></div>
+          <button class="btn btn-accent" data-page="hunt">Can't find it? Hunt ↗</button>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="catalog-search"><span>⌕</span><input id="catalogSearch" placeholder="Search part name, vehicle or number…"></div>
+          <select id="categoryFilter"><option value="">All categories</option><option>Lighting</option><option>Brakes</option><option>Engine</option><option>Body</option><option>Suspension</option></select>
+          <select id="conditionFilter"><option value="">Any condition</option><option>New</option><option>Used</option></select>
+        </div>
+
+        <div class="catalog-meta"><span id="resultsCount">Showing sample listings</span><span>DEMO INVENTORY <i class="live-dot"></i></span></div>
+        <div class="product-grid catalog-grid" id="catalogProducts"></div>
+      </div>
+    </section>
+
+    <!-- VENDORS -->
+    <section class="page" id="page-vendors">
+      <div class="subpage-wrap vendor-page">
+        <div class="vendor-hero">
+          <div>
+            <span class="eyebrow"><span class="live-dot"></span> PART HUNT PARTNER NETWORK</span>
+            <h1>Put your parts<br><span class="gradient-text">in the right hands.</span></h1>
+            <p>Reach customers who are actively looking for the parts you stock. Receive detailed requests with vehicle information, photos and videos.</p>
+            <button class="btn btn-accent btn-large" id="vendorRegisterBtn">Register your shop <span>↗</span></button>
+          </div>
+
+          <div class="vendor-hero-art">
+            <div class="vendor-glow"></div>
+            <div class="vendor-floating">
+              <span>NEW REQUEST</span><b>2015 Hyundai Elantra</b>
+              <small>Front left side mirror · Photo + video</small>
+              <div class="vendor-offer">Respond with an offer <span>↗</span></div>
+            </div>
+            <div class="vendor-circle">PH<br><b>GH</b></div>
+          </div>
+        </div>
+
+        <div class="vendor-benefits">
+          <div><span>01</span><h3>Relevant requests</h3><p>Get customer requests with vehicle details and clear visual evidence.</p></div>
+          <div><span>02</span><h3>Show your inventory</h3><p>List products, share real photos and confirm compatibility.</p></div>
+          <div><span>03</span><h3>Grow your reach</h3><p>Connect beyond walk-in traffic and your immediate location.</p></div>
+        </div>
+
+        <div class="vendor-demo">
+          <div class="vendor-demo-copy">
+            <span class="tiny-label">VENDOR WORKSPACE PREVIEW</span>
+            <h2>One workspace.<br><em>Every opportunity.</em></h2>
+            <p>Manage requests, inventory and offers in a clean seller dashboard.</p>
+            <button class="btn btn-dark" data-page="dashboard">Preview vendor dashboard →</button>
+          </div>
+
+          <div class="dashboard-preview">
+            <div class="dash-sidebar">
+              <b>PH<span>GH</span></b>
+              <i class="dash-active">◫ Overview</i><i>▧ Part Hunts</i><i>□ Inventory</i><i>↗ Offers</i>
+            </div>
+
+            <div class="dash-content">
+              <div class="dash-top"><b>Good afternoon, Vendor</b><span>Demo workspace</span></div>
+              <div class="dash-metrics">
+                <div><small>Open requests</small><b>18</b></div>
+                <div><small>Active listings</small><b>124</b></div>
+                <div><small>Offers sent</small><b>32</b></div>
+              </div>
+              <div class="dash-request">
+                <span class="request-pulse"></span>
+                <div><b>Hyundai Elantra · 2015</b><small>Front left mirror · Kumasi</small></div>
+                <span class="dash-match">New</span>
+              </div>
+              <div class="dash-request">
+                <span class="request-pulse"></span>
+                <div><b>Toyota Corolla · 2012</b><small>Headlight assembly · Accra</small></div>
+                <span class="dash-match">New</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="page" id="page-dashboard">
+      <div class="subpage-wrap">
+        <button class="back-link" data-page="vendors">← Back to vendors</button>
+
+        <div class="dashboard-page-head">
+          <div><span class="eyebrow"><span class="live-dot"></span> VENDOR DEMO WORKSPACE</span><h1>Seller <span class="gradient-text">overview.</span></h1><p>Illustrative dashboard with sample marketplace activity.</p></div>
+          <button class="btn btn-accent" id="addListingBtn">＋ Add listing</button>
+        </div>
+
+        <div class="dashboard-stats">
+          <div class="stat-card"><small>Open Part Hunts</small><b>18</b><span>+4 since yesterday</span></div>
+          <div class="stat-card"><small>Active listings</small><b>124</b><span>12 low stock</span></div>
+          <div class="stat-card"><small>Offers sent</small><b>32</b><span>7 awaiting response</span></div>
+          <div class="stat-card"><small>Demo sales</small><b>GH₵ 8,450</b><span>This month</span></div>
+        </div>
+
+        <div class="dashboard-content-grid">
+          <div class="form-panel requests-panel">
+            <div class="panel-heading"><div><span class="tiny-label">REQUESTS THAT MAY MATCH</span><h2>Incoming Part Hunts</h2></div><span class="panel-icon">↗</span></div>
+            <div class="request-list">
+              <div class="request-row">
+                <div class="request-thumb">◉</div>
+                <div><b>Hyundai Elantra · 2015</b><p>Front left side mirror · Kumasi</p><small>Photos + video · 12 min ago</small></div>
+                <button class="btn btn-dark btn-small respondBtn">Respond</button>
+              </div>
+              <div class="request-row">
+                <div class="request-thumb">⌁</div>
+                <div><b>Toyota Corolla · 2012</b><p>Headlight assembly · Accra</p><small>3 photos · 38 min ago</small></div>
+                <button class="btn btn-dark btn-small respondBtn">Respond</button>
+              </div>
+              <div class="request-row">
+                <div class="request-thumb">⚙</div>
+                <div><b>Nissan Navara · 2018</b><p>Front brake caliper · Tema</p><small>Video · 1 hour ago</small></div>
+                <button class="btn btn-dark btn-small respondBtn">Respond</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-panel inventory-panel">
+            <div class="panel-heading"><div><span class="tiny-label">YOUR STORE</span><h2>Inventory snapshot</h2></div></div>
+            <div class="inventory-item"><span class="inventory-icon">◉</span><div><b>Headlight assembly</b><small>Toyota Corolla 2012–2014</small></div><strong>GH₵ 850</strong></div>
+            <div class="inventory-item"><span class="inventory-icon">⌁</span><div><b>Side mirror</b><small>Hyundai Elantra 2014–2016</small></div><strong>GH₵ 620</strong></div>
+            <div class="inventory-item"><span class="inventory-icon">⚙</span><div><b>Brake pad set</b><small>Honda Civic 2016–2019</small></div><strong>GH₵ 390</strong></div>
+            <button class="text-link inventory-link" id="manageInventory">Manage inventory ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-head">
+      <div><span class="tiny-label">YOUR SELECTION</span><h2>Parts cart <span id="drawerCount">(0)</span></h2></div>
+      <button class="close-btn" id="cartClose">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <span>⌁</span><b>Your cart is waiting.</b>
+        <p>Find a part and add it here to continue.</p>
+        <button class="btn btn-dark" data-page="browse">Browse parts</button>
+      </div>
+    </div>
+
+    <div class="cart-foot" id="cartFoot" hidden>
+      <div class="cart-total"><span>Subtotal</span><b id="cartSubtotal">GH₵ 0</b></div>
+      <button class="btn btn-accent btn-large" id="checkoutBtn">Continue to demo checkout ↗</button>
+      <small>Prototype only · No real payment</small>
+    </div>
+  </aside>
+
+  <!-- MODALS -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="close-btn modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+
+  <!-- DARK / LIGHT MODE FUNCTIONALITY -->
+  <script>
+    (function () {
+      const themeToggle = document.getElementById("themeToggle");
+      if (!themeToggle) return;
+
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem("partHuntTheme");
+      const initialTheme = savedTheme || "dark";
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "☀" : "☾";
+
+        themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute(
+          "title",
+          isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+
+        localStorage.setItem("partHuntTheme", theme);
+      }
+
+      setTheme(initialTheme);
+
+      themeToggle.addEventListener("click", function () {
+        const currentTheme = root.dataset.theme || "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+      });
+    })();
+  </script>
+</body>
+</html>
